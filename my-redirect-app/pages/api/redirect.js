@@ -3,12 +3,9 @@ export default function handler(req, res) {
   const isWindows = /windows/i.test(userAgent);
 
   if (isWindows) {
-    // Redirect Windows users to PDF in public folder
-    res.writeHead(302, { Location: "/example.pdf" });
-    res.end();
+    // Redirect Windows users directly to the PDF
+    res.redirect('https://yourproject.vercel.app/example.pdf');
   } else {
-    // Redirect all other users to DocuSign
-    res.writeHead(302, { Location: "https://www.docusign.com" });
-    res.end();
+    res.redirect('https://www.docusign.com');
   }
 }
